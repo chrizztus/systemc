@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1E3FD169D92EF00D1395A /* main.cpp */; };
 		4AB1E400169D92EF00D1395A /* SystemCTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */; };
+		4AB1E40B169DC22D00D1395A /* libsystemc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB1E40A169DC22D00D1395A /* libsystemc.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
+		4A91E13516A94FFB00A6C167 /* Ampel3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel3.h; sourceTree = "<group>"; };
 		4AB1E3F9169D92EF00D1395A /* SystemCTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SystemCTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB1E3FD169D92EF00D1395A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SystemCTest.1; sourceTree = "<group>"; };
+		4AB1E40A169DC22D00D1395A /* libsystemc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsystemc.dylib; path = ../../../../../../usr/local/lib/libsystemc.dylib; sourceTree = "<group>"; };
+		4AB1E40E16A6D99400D1395A /* Ampel1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel1.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		4AB1E40F16A6DB9000D1395A /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
+		4AB1E41016A89E8E00D1395A /* Randomizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randomizer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AB1E40B169DC22D00D1395A /* libsystemc.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +52,7 @@
 		4AB1E3EE169D92EF00D1395A = {
 			isa = PBXGroup;
 			children = (
+				4AB1E40A169DC22D00D1395A /* libsystemc.dylib */,
 				4AB1E3FC169D92EF00D1395A /* SystemCTest */,
 				4AB1E3FA169D92EF00D1395A /* Products */,
 			);
@@ -60,8 +69,13 @@
 		4AB1E3FC169D92EF00D1395A /* SystemCTest */ = {
 			isa = PBXGroup;
 			children = (
+				4AB1E40F16A6DB9000D1395A /* defines.h */,
 				4AB1E3FD169D92EF00D1395A /* main.cpp */,
 				4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */,
+				4AB1E40E16A6D99400D1395A /* Ampel1.h */,
+				4A91E13516A94FFB00A6C167 /* Ampel3.h */,
+				4A916DE616AB406A00D1D349 /* Ampel2.h */,
+				4AB1E41016A89E8E00D1395A /* Randomizer.h */,
 			);
 			path = SystemCTest;
 			sourceTree = "<group>";
@@ -143,12 +157,14 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lsystemc";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -166,11 +182,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = "-lsystemc";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -178,14 +196,25 @@
 		4AB1E404169D92EF00D1395A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-lsystemc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386";
 			};
 			name = Debug;
 		};
 		4AB1E405169D92EF00D1395A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = "-lsystemc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "x86_64 i386";
 			};
 			name = Release;
 		};
@@ -208,6 +237,7 @@
 				4AB1E405169D92EF00D1395A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
