@@ -21,6 +21,9 @@ int sc_main(int argc, char* argv[]) {
     sc_signal<int> connect1_3;
     sc_signal<int> connect2_4;
     
+    //train fifo
+    sc_fifo<sc_uint<4> > fifo;
+    
     sc_clock clock("clock", 1, SC_SEC);
     
     
@@ -48,16 +51,16 @@ int sc_main(int argc, char* argv[]) {
     ampel4.color_trigger(connect2_4);
     ampel2.trigger_tandem(connect2_4);
     
+    //ampel became red notification
     ampel2.sig_start(trigger12);
     ampel1.cycle_complete(trigger12);
     
     ampel1.sig_start(trigger21);
     ampel2.cycle_complete(trigger21);
     
-//    ampel1.cycle_complete(red1);
-//    ampel2.sig_red(red1);
-//    ampel2.cycle_complete(red2);
-//    ampel1.sig_red(red2);
+    
+    ampel2.fifoIn(fifo);
+    ampel1.fifoOut(fifo);
     
     sc_start(360, SC_SEC);
     

@@ -26,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A380BEB16AD79A7003A9235 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsystemc-2.3.0.dylib"; path = "../../../../../../usr/local/lib-macosx64/libsystemc-2.3.0.dylib"; sourceTree = "<group>"; };
 		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 				4A91E13516A94FFB00A6C167 /* Ampel3.h */,
 				4A7EA86B16AD57DE00B06672 /* Ampel4.h */,
 				4AB1E41016A89E8E00D1395A /* Randomizer.h */,
+				4A380BEB16AD79A7003A9235 /* Environment.h */,
 			);
 			path = SystemCTest;
 			sourceTree = "<group>";
