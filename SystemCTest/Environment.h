@@ -15,6 +15,7 @@ SC_MODULE (env) {
     
     sc_in<bool> clk_in;
 
+    int internal_ticks;
     
     void received_tick()
     {
@@ -22,6 +23,8 @@ SC_MODULE (env) {
     }
     
     SC_CTOR (env) {
+        
+        
         
         SC_METHOD(tick);
         sensitive << clk_in;

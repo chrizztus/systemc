@@ -17,12 +17,10 @@ SC_MODULE (ampel1) {
     sc_in<bool> sig_start;
     sc_in<bool> sig_global_start;
     
-    sc_fifo_out<int> fifoOut;
-    
     sc_out<int> trigger_tandem;
     sc_out<bool> cycle_complete; //send when switched to red
     
-    enum state color;
+    enum state_light color;
     
     int internal_ticks;
     bool haveglobalstartsig;
@@ -34,20 +32,20 @@ SC_MODULE (ampel1) {
             ++internal_ticks;
             
             if(internal_ticks >= WAIT_ROTGELB_A1A3
-               && color == rot)
+               && color == eRot)
             {
                 //write to false to ensure ampel2 will be triggered the next time
                 cycle_complete.write(false);
                 
-                color = rotgelb;
+                color = eRotgelb;
                 PRNT(colors[color]);
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A1A3
                + DURATION_ROTGELB
-               && color == rotgelb)
+               && color == eRotgelb)
             {
-                color = gruen;
+                color = eGruen;
                 PRNT(colors[color]);
 
             }
@@ -55,9 +53,9 @@ SC_MODULE (ampel1) {
             if(internal_ticks >= WAIT_ROTGELB_A1A3
                + DURATION_ROTGELB
                + DURATION_GRUEN
-               && color == gruen)
+               && color == eGruen)
             {
-                color = gelb;
+                color = eGelb;
                 PRNT(colors[color]);
                 
             }
@@ -66,13 +64,12 @@ SC_MODULE (ampel1) {
                + DURATION_ROTGELB
                + DURATION_GRUEN
                + DURATION_GELB
-               && color == gelb)
+               && color == eGelb)
             {
-                color = rot;
+                color = eRot;
                 PRNT(colors[color]);
 
                 internal_ticks = -1;
-                //fifoOut.write(4);
                 cycle_complete.write(true);
                 
             }
@@ -110,7 +107,7 @@ SC_MODULE (ampel1) {
     
     SC_CTOR (ampel1) {
         internal_ticks = -1;
-        color = rot;
+        color = eRot;
         haveglobalstartsig = false;
         
         SC_METHOD(received_global_start_signal);

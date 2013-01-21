@@ -13,17 +13,28 @@
 
 SC_MODULE (ampel2) {
     
+    /*
+     * signals in
+     */
     sc_in<bool> clk_in;
     sc_in<bool> sig_start;
+    sc_fifo_in<int> fifo_incomingTrain; // x1
+    sc_fifo_in<int> fifo_outgoingTrain; // x2
     
-    sc_fifo_in<int> fifoIn;
-    
+    /*
+     * signals out
+     */
     sc_out<int> trigger_tandem;
     sc_out<bool> cycle_complete; //wird gesendet wenn ampel auf rot springt
     
-    enum state color;
+    /*
+     * variables
+     */
+    enum state_light color;
+    enum state_arrow eArrow;
     int internal_ticks;
-    
+    int offset;
+    bool train_inside;
     
     void tick()
     {
@@ -32,28 +43,51 @@ SC_MODULE (ampel2) {
             ++internal_ticks;
             
             if(internal_ticks >= WAIT_ROTGELB_A2A4
-               && color == rot)
+               && color == eRot)
             {
                 cycle_complete.write(false);
-                color = rotgelb;
+                color = eRotgelb;
                 PRNT(colors[color]);
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A2A4
                + DURATION_ROTGELB
-               && color == rotgelb)
+               && color == eRotgelb)
             {
-                color = gruen;
+                
+                color = eGruen;
                 PRNT(colors[color]);
                 
+            }
+            
+            // handle incoming and outgoing trains
+            if(color == eGruen)
+            {
+                int i;
+                if(fifo_incomingTrain.nb_read(i)){ //read w\o wait()
+                    PRNT("Incoming train");
+                    
+                    train_inside = true;
+                }
+                
+                if(fifo_outgoingTrain.nb_read(i))
+                {
+                    PRNT("Outgoing train");
+                    train_inside = false;
+                    offset = -1;
+                }
+                
+                if (train_inside) {
+                    offset ++;
+                }
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A2A4
                + DURATION_ROTGELB
                + DURATION_GRUEN
-               && color == gruen)
+               && color == eGruen)
             {
-                color = gelb;
+                color = eGelb;
                 PRNT(colors[color]);
                 
             }
@@ -62,9 +96,9 @@ SC_MODULE (ampel2) {
                + DURATION_ROTGELB
                + DURATION_GRUEN
                + DURATION_GELB
-               && color == gelb)
+               && color == eGelb)
             {
-                color = rot;
+                color = eRot;
                 PRNT(colors[color]);
                 
                 internal_ticks = -1; //will be set on next sig_start
@@ -85,31 +119,24 @@ SC_MODULE (ampel2) {
             
             printf("\n\n\n");
             PRNT("started cycle");
-            
-            //fifo test
-            int i; 
-            if(fifoIn.nb_read(i)){ //read w\o wait()
-                printf("have value...\n");
-            }
-            else
-            {
-                printf("have no value...\n");
-            }
 
-            sc_stop();
+//            sc_stop();
         }
-        
     }
+    
     
     SC_CTOR (ampel2) {
         internal_ticks = -1;
-        color = rot;
+        color = eRot;
+        eArrow = eOff;
+        offset = -1;
         
         SC_METHOD(received_ext_signal);
         sensitive << sig_start;
         
         SC_METHOD(tick);
         sensitive << clk_in.pos();
+        
     }
 };
 

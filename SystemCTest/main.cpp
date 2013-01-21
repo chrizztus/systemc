@@ -21,8 +21,9 @@ int sc_main(int argc, char* argv[]) {
     sc_signal<int> connect1_3;
     sc_signal<int> connect2_4;
     
-    //train fifo
-    sc_fifo<int> fifo;
+    //train signal
+    sc_fifo<int> sig_x1;
+    sc_fifo<int> sig_x2;
     
     sc_clock clock("clock", 1, SC_SEC);
     
@@ -57,10 +58,9 @@ int sc_main(int argc, char* argv[]) {
     
     ampel1.sig_start(trigger21);
     ampel2.cycle_complete(trigger21);
-    
-    
-    ampel2.fifoIn(fifo);
-    ampel1.fifoOut(fifo);
+
+    ampel2.fifo_incomingTrain(sig_x1);
+    ampel2.fifo_outgoingTrain(sig_x2);
     
     sc_start(360, SC_SEC);
     

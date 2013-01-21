@@ -22,13 +22,25 @@
 
 #define PRNT(a) printf("%s: [%s] - %s\n",sc_time_stamp().to_string().c_str(),name(),a);
 
-enum state
+enum state_light
 {
-    rot=0,
-    rotgelb,
-    gruen,
-    gelb,
+    eRot=0,
+    eRotgelb,
+    eGruen,
+    eGelb,
     count
+};
+
+enum state_arrow
+{
+    eOff=0,
+    eOn
+};
+
+enum state_tramsignal
+{
+    eF1=0,  // horizontal
+    eF2     // vertical
 };
 
 char *colors[NUM_STATES] = {"Rot","Rotgelb","Gruen","Gelb"};

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A7EA86A16AD381800B06672 /* libsystemc-2.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */; };
+		4A323DA416AD9BC80006EBAA /* libsystemc-2.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A323DA316AD9BC80006EBAA /* libsystemc-2.3.0.dylib */; };
 		4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1E3FD169D92EF00D1395A /* main.cpp */; };
 		4AB1E400169D92EF00D1395A /* SystemCTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */; };
 /* End PBXBuildFile section */
@@ -26,8 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A323DA316AD9BC80006EBAA /* libsystemc-2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsystemc-2.3.0.dylib"; path = "../../../../../../usr/local/lib/libsystemc-2.3.0.dylib"; sourceTree = "<group>"; };
 		4A380BEB16AD79A7003A9235 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
-		4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsystemc-2.3.0.dylib"; path = "../../../../../../usr/local/lib-macosx64/libsystemc-2.3.0.dylib"; sourceTree = "<group>"; };
 		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
 		4A91E13516A94FFB00A6C167 /* Ampel3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel3.h; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A7EA86A16AD381800B06672 /* libsystemc-2.3.0.dylib in Frameworks */,
+				4A323DA416AD9BC80006EBAA /* libsystemc-2.3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +54,7 @@
 		4AB1E3EE169D92EF00D1395A = {
 			isa = PBXGroup;
 			children = (
-				4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */,
+				4A323DA316AD9BC80006EBAA /* libsystemc-2.3.0.dylib */,
 				4AB1E3FC169D92EF00D1395A /* SystemCTest */,
 				4AB1E3FA169D92EF00D1395A /* Products */,
 			);

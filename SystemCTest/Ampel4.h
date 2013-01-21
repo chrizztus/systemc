@@ -27,6 +27,7 @@ SC_MODULE (ampel4) {
     SC_CTOR (ampel4) {
         
         color = 0;
+        
         SC_METHOD(received_trigger);
         sensitive << color_trigger;
     }
