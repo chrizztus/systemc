@@ -17,7 +17,7 @@ SC_MODULE (ampel2) {
     sc_in<bool> sig_start;
     
     sc_out<int> trigger_tandem;
-    //sc_out<bool> cycle_complete; //wird gesendet wenn ampel auf rot springt
+    sc_out<bool> cycle_complete; //wird gesendet wenn ampel auf rot springt
     
     enum state color;
     
@@ -28,11 +28,14 @@ SC_MODULE (ampel2) {
     {
         if(internal_ticks >= 0)
         {
+            ++internal_ticks;
+            
             if(internal_ticks >= WAIT_ROTGELB_A2A4
                && color == rot)
             {
+                cycle_complete.write(false);
                 color = rotgelb;
-                printf("%s: switched to: rotgelb after %d seconds\n",sc_time_stamp().to_string().c_str(), internal_ticks);
+                PRNT(colors[color]);
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A2A4
@@ -40,7 +43,7 @@ SC_MODULE (ampel2) {
                && color == rotgelb)
             {
                 color = gruen;
-                printf("%s: switched to: gruen after %d seconds\n",sc_time_stamp().to_string().c_str(),internal_ticks);
+                PRNT(colors[color]);
                 
             }
             
@@ -50,7 +53,7 @@ SC_MODULE (ampel2) {
                && color == gruen)
             {
                 color = gelb;
-                printf("%s: switched to: gelb after %d seconds\n",sc_time_stamp().to_string().c_str(),internal_ticks);
+                PRNT(colors[color]);
                 
             }
             
@@ -61,14 +64,14 @@ SC_MODULE (ampel2) {
                && color == gelb)
             {
                 color = rot;
-                printf("%s: switched to: rot after %d seconds\n",sc_time_stamp().to_string().c_str(),internal_ticks);
+                PRNT(colors[color]);
                 
                 internal_ticks = -1; //will be set on next sig_start
+                cycle_complete.write(true);
             }
             
             //send current color to ampel4
             trigger_tandem.write(color);
-            ++internal_ticks;
         }
         
     }
@@ -76,9 +79,11 @@ SC_MODULE (ampel2) {
     void received_ext_signal()
     {
         //set internal_ticks to 0 to start cycle
-        //bool sigistrue = ;
         if (sig_start.read()) {
             internal_ticks = 0;
+            
+            printf("\n\n\n");
+            PRNT("started cycle");
         }
         
     }

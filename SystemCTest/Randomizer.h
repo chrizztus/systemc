@@ -9,6 +9,8 @@
 #ifndef SystemCTest_Randomizer_h
 #define SystemCTest_Randomizer_h
 
+#include "defines.h"
+
 SC_MODULE (randomizer) {
     
     sc_in<bool> clk_in;

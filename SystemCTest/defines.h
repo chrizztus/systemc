@@ -9,6 +9,8 @@
 #ifndef SystemCTest_defines_h
 #define SystemCTest_defines_h
 
+#include <systemc.h>
+
 #define WAIT_ROTGELB_A1A3   4
 #define WAIT_ROTGELB_A2A4   3
 
@@ -17,6 +19,8 @@
 #define DURATION_GELB       2
 
 #define NUM_STATES          4
+
+#define PRNT(a) printf("%s: [%s] - %s\n",sc_time_stamp().to_string().c_str(),name(),a);
 
 enum state
 {

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A7EA86A16AD381800B06672 /* libsystemc-2.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */; };
 		4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1E3FD169D92EF00D1395A /* main.cpp */; };
 		4AB1E400169D92EF00D1395A /* SystemCTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */; };
-		4AB1E40B169DC22D00D1395A /* libsystemc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AB1E40A169DC22D00D1395A /* libsystemc.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,12 +26,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsystemc-2.3.0.dylib"; path = "../../../../../../usr/local/lib-macosx64/libsystemc-2.3.0.dylib"; sourceTree = "<group>"; };
+		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
 		4A91E13516A94FFB00A6C167 /* Ampel3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel3.h; sourceTree = "<group>"; };
 		4AB1E3F9169D92EF00D1395A /* SystemCTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SystemCTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB1E3FD169D92EF00D1395A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SystemCTest.1; sourceTree = "<group>"; };
-		4AB1E40A169DC22D00D1395A /* libsystemc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsystemc.dylib; path = ../../../../../../usr/local/lib/libsystemc.dylib; sourceTree = "<group>"; };
 		4AB1E40E16A6D99400D1395A /* Ampel1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel1.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		4AB1E40F16A6DB9000D1395A /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		4AB1E41016A89E8E00D1395A /* Randomizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randomizer.h; sourceTree = "<group>"; };
@@ -42,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AB1E40B169DC22D00D1395A /* libsystemc.dylib in Frameworks */,
+				4A7EA86A16AD381800B06672 /* libsystemc-2.3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +53,7 @@
 		4AB1E3EE169D92EF00D1395A = {
 			isa = PBXGroup;
 			children = (
-				4AB1E40A169DC22D00D1395A /* libsystemc.dylib */,
+				4A7EA86916AD381800B06672 /* libsystemc-2.3.0.dylib */,
 				4AB1E3FC169D92EF00D1395A /* SystemCTest */,
 				4AB1E3FA169D92EF00D1395A /* Products */,
 			);
@@ -73,8 +74,9 @@
 				4AB1E3FD169D92EF00D1395A /* main.cpp */,
 				4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */,
 				4AB1E40E16A6D99400D1395A /* Ampel1.h */,
-				4A91E13516A94FFB00A6C167 /* Ampel3.h */,
 				4A916DE616AB406A00D1D349 /* Ampel2.h */,
+				4A91E13516A94FFB00A6C167 /* Ampel3.h */,
+				4A7EA86B16AD57DE00B06672 /* Ampel4.h */,
 				4AB1E41016A89E8E00D1395A /* Randomizer.h */,
 			);
 			path = SystemCTest;
@@ -197,7 +199,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"\"/usr/local/lib-macosx64\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lsystemc";
@@ -210,7 +215,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					"\"/usr/local/lib-macosx64\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = "-lsystemc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
