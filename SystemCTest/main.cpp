@@ -22,7 +22,7 @@ int sc_main(int argc, char* argv[]) {
     sc_signal<int> connect2_4;
     
     //train fifo
-    sc_fifo<sc_uint<4> > fifo;
+    sc_fifo<int> fifo;
     
     sc_clock clock("clock", 1, SC_SEC);
     

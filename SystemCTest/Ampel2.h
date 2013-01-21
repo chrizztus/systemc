@@ -16,7 +16,7 @@ SC_MODULE (ampel2) {
     sc_in<bool> clk_in;
     sc_in<bool> sig_start;
     
-    sc_fifo_in<sc_uint<4> > fifoIn;
+    sc_fifo_in<int> fifoIn;
     
     sc_out<int> trigger_tandem;
     sc_out<bool> cycle_complete; //wird gesendet wenn ampel auf rot springt
@@ -87,9 +87,15 @@ SC_MODULE (ampel2) {
             PRNT("started cycle");
             
             //fifo test
-            sc_uint<4> i; 
-            fifoIn.read(i);
-            cout << sc_time_stamp() << ": " << name() << ": read number " << i << endl;
+            int i; 
+            if(fifoIn.nb_read(i)){ //read w\o wait()
+                printf("have value...\n");
+            }
+            else
+            {
+                printf("have no value...\n");
+            }
+
             sc_stop();
         }
         

@@ -17,7 +17,7 @@ SC_MODULE (ampel1) {
     sc_in<bool> sig_start;
     sc_in<bool> sig_global_start;
     
-    sc_fifo_out<sc_uint<4> > fifoOut;
+    sc_fifo_out<int> fifoOut;
     
     sc_out<int> trigger_tandem;
     sc_out<bool> cycle_complete; //send when switched to red
@@ -72,7 +72,7 @@ SC_MODULE (ampel1) {
                 PRNT(colors[color]);
 
                 internal_ticks = -1;
-                fifoOut.write(4);
+                //fifoOut.write(4);
                 cycle_complete.write(true);
                 
             }
