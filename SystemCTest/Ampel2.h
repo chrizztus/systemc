@@ -18,8 +18,8 @@ SC_MODULE (ampel2) {
      */
     sc_in<bool> clk_in;
     sc_in<bool> sig_start;
-    sc_fifo_in<int> fifo_incomingTrain; // x1
-    sc_fifo_in<int> fifo_outgoingTrain; // x2
+    sc_fifo_in<train> fifo_incomingTrain; // x1
+    sc_fifo_in<train> fifo_outgoingTrain; // x2
     
     /*
      * signals out
@@ -37,6 +37,7 @@ SC_MODULE (ampel2) {
     int internal_ticks;
     int offset;
     bool train_inside;
+    train t;
     
     void tick()
     {
@@ -67,14 +68,14 @@ SC_MODULE (ampel2) {
             {
                 
                 tram_out.write(eF1);
-                int i; // incremented train number
-                if(fifo_incomingTrain.nb_read(i)){ //read w\o wait()
+                //train t; // incremented train number
+                if(fifo_incomingTrain.nb_read(t)){ //read w\o wait()
                     PRNT("Incoming train");
                     arrow_out.write(eOn);
                     train_inside = true;
                 }
                 
-                if(fifo_outgoingTrain.nb_read(i))
+                if(fifo_outgoingTrain.nb_read(t))
                 {
                     PRNT("Outgoing train");
                     train_inside = false;
@@ -82,8 +83,8 @@ SC_MODULE (ampel2) {
                     offset = 0;
                 }
                 
-                if (train_inside) {
-                    PRNT("offset ++");
+                if (t/*rain_inside*/) {
+                    //PRNT("offset ++");
                     offset ++;
                 }
             }
@@ -137,6 +138,7 @@ SC_MODULE (ampel2) {
         color = eRot;
         eArrow = eOff;
         offset = 0;
+        train_inside = NULL;
         
         SC_METHOD(received_ext_signal);
         sensitive << sig_start;

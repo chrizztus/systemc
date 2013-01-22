@@ -38,7 +38,6 @@
 		4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SystemCTest.1; sourceTree = "<group>"; };
 		4AB1E40E16A6D99400D1395A /* Ampel1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel1.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		4AB1E40F16A6DB9000D1395A /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
-		4AB1E41016A89E8E00D1395A /* Randomizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randomizer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +81,6 @@
 				4A7EA86B16AD57DE00B06672 /* Ampel4.h */,
 				4AA705C616AE8C170077377D /* Tramsignal.h */,
 				4AA705C816AE9D6E0077377D /* RoterPfeil.h */,
-				4AB1E41016A89E8E00D1395A /* Randomizer.h */,
 				4A380BEB16AD79A7003A9235 /* Environment.h */,
 			);
 			path = SystemCTest;

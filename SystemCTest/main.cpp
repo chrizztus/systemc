@@ -5,7 +5,6 @@
 #include "Ampel3.h"
 #include "Ampel2.h"
 #include "Ampel4.h"
-#include "Randomizer.h"
 #include "Environment.h"
 #include "Tramsignal.h"
 #include "RoterPfeil.h"
@@ -27,8 +26,8 @@ int sc_main(int argc, char* argv[]) {
     sc_signal<state_arrow> connect2_arrow;
     
     //train signal
-    sc_fifo<int> sig_x1;
-    sc_fifo<int> sig_x2;
+    sc_fifo<train> sig_x1(1); //guarantee only one train at a time
+    sc_fifo<train> sig_x2(1);
     
     sc_clock clock("clock", 1, SC_SEC);
     
@@ -39,17 +38,15 @@ int sc_main(int argc, char* argv[]) {
     ampel4 ampel4("Ampel4");
     tram tram("Tramsignal");
     arrow pfeil("RoterPfeil");
-    randomizer random("Randomizer");
     env env("Environment");
     
     ampel1.clk_in(clock);
     ampel2.clk_in(clock);
-    random.clk_in(clock);
     env.clk_in(clock);
    
     //initial connection
     ampel1.sig_global_start(global_start);
-    random.start_work(global_start);
+    env.start_work(global_start);
     
     /*
      * connections
@@ -80,7 +77,7 @@ int sc_main(int argc, char* argv[]) {
     ampel2.arrow_out(connect2_arrow);
     pfeil.trigger(connect2_arrow);
     
-    sc_start(360, SC_SEC);
+    sc_start(LIFECYCLE, SC_SEC);
     
     return(EXIT_SUCCESS);
 }

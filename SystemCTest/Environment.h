@@ -15,16 +15,32 @@ SC_MODULE (env) {
     
     sc_in<bool> clk_in;
     
-    sc_fifo_out<int> fifo_train;
+    sc_fifo_out<train> fifo_train;
+    sc_out<bool> start_work;
 
     int internal_ticks,train_number;
+    
+    sc_int<8> gen_rand(int min,int max)
+    {
+        sc_int<8> num;
+        while (num < min) 
+        {
+            num = random() % (max+1);
+        }
+        return num;
+    }
     
     void tick()
     {
         internal_ticks++;
         
+        if(internal_ticks == 0)
+            start_work.write(true);
+        
         if (internal_ticks == 303) {
-            fifo_train.write(++train_number);
+            train t(internal_ticks,gen_rand(10,20),gen_rand(3,8));
+
+            fifo_train.write(t);
             PRNT("sending train sig");
         }
     }
