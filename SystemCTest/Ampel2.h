@@ -83,7 +83,7 @@ SC_MODULE (ampel2) {
                 }
                 
                 if (train_inside) {
-                    
+                    PRNT("offset ++");
                     offset ++;
                 }
             }
