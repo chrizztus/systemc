@@ -13,9 +13,10 @@
 
 SC_MODULE (ampel4) {
     
-    sc_in<int> color_trigger;
+    sc_in<state_light> color_trigger;
     
-    int color;
+    //int color;
+    enum state_light color;
     
     void received_trigger()
     {
@@ -26,7 +27,7 @@ SC_MODULE (ampel4) {
     
     SC_CTOR (ampel4) {
         
-        color = 0;
+        color = eRot;
         
         SC_METHOD(received_trigger);
         sensitive << color_trigger;

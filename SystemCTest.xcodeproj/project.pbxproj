@@ -31,6 +31,8 @@
 		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
 		4A91E13516A94FFB00A6C167 /* Ampel3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel3.h; sourceTree = "<group>"; };
+		4AA705C616AE8C170077377D /* Tramsignal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tramsignal.h; sourceTree = "<group>"; };
+		4AA705C816AE9D6E0077377D /* RoterPfeil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoterPfeil.h; sourceTree = "<group>"; };
 		4AB1E3F9169D92EF00D1395A /* SystemCTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SystemCTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB1E3FD169D92EF00D1395A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SystemCTest.1; sourceTree = "<group>"; };
@@ -78,6 +80,8 @@
 				4A916DE616AB406A00D1D349 /* Ampel2.h */,
 				4A91E13516A94FFB00A6C167 /* Ampel3.h */,
 				4A7EA86B16AD57DE00B06672 /* Ampel4.h */,
+				4AA705C616AE8C170077377D /* Tramsignal.h */,
+				4AA705C816AE9D6E0077377D /* RoterPfeil.h */,
 				4AB1E41016A89E8E00D1395A /* Randomizer.h */,
 				4A380BEB16AD79A7003A9235 /* Environment.h */,
 			);

@@ -39,8 +39,8 @@ enum state_arrow
 
 enum state_tramsignal
 {
-    eF1=0,  // horizontal
-    eF2     // vertical
+    eF0=0,  // horizontal
+    eF1     // vertical
 };
 
 char *colors[NUM_STATES] = {"Rot","Rotgelb","Gruen","Gelb"};

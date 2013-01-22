@@ -24,8 +24,10 @@ SC_MODULE (ampel2) {
     /*
      * signals out
      */
-    sc_out<int> trigger_tandem;
+    sc_out<state_light> trigger_tandem;
     sc_out<bool> cycle_complete; //wird gesendet wenn ampel auf rot springt
+    sc_out<state_tramsignal> tram_out;
+    sc_out<state_arrow> arrow_out;
     
     /*
      * variables
@@ -63,10 +65,12 @@ SC_MODULE (ampel2) {
             // handle incoming and outgoing trains
             if(color == eGruen)
             {
-                int i;
+                
+                tram_out.write(eF1);
+                int i; // incremented train number
                 if(fifo_incomingTrain.nb_read(i)){ //read w\o wait()
                     PRNT("Incoming train");
-                    
+                    arrow_out.write(eOn);
                     train_inside = true;
                 }
                 
@@ -74,10 +78,12 @@ SC_MODULE (ampel2) {
                 {
                     PRNT("Outgoing train");
                     train_inside = false;
-                    offset = -1;
+                    arrow_out.write(eOff);
+                    offset = 0;
                 }
                 
                 if (train_inside) {
+                    
                     offset ++;
                 }
             }
@@ -88,6 +94,7 @@ SC_MODULE (ampel2) {
                && color == eGruen)
             {
                 color = eGelb;
+                tram_out.write(eF0);
                 PRNT(colors[color]);
                 
             }
@@ -129,7 +136,7 @@ SC_MODULE (ampel2) {
         internal_ticks = -1;
         color = eRot;
         eArrow = eOff;
-        offset = -1;
+        offset = 0;
         
         SC_METHOD(received_ext_signal);
         sensitive << sig_start;

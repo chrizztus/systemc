@@ -14,20 +14,28 @@
 SC_MODULE (env) {
     
     sc_in<bool> clk_in;
-
-    int internal_ticks;
     
-    void received_tick()
-    {
+    sc_fifo_out<int> fifo_train;
 
+    int internal_ticks,train_number;
+    
+    void tick()
+    {
+        internal_ticks++;
+        
+        if (internal_ticks == 303) {
+            fifo_train.write(++train_number);
+            PRNT("sending train sig");
+        }
     }
     
     SC_CTOR (env) {
         
-        
+        train_number = 0;
+        internal_ticks = -1;
         
         SC_METHOD(tick);
-        sensitive << clk_in;
+        sensitive << clk_in.pos();
     }
 };
 

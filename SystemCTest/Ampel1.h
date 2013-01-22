@@ -17,7 +17,8 @@ SC_MODULE (ampel1) {
     sc_in<bool> sig_start;
     sc_in<bool> sig_global_start;
     
-    sc_out<int> trigger_tandem;
+    sc_out<state_light> trigger_tandem;
+    sc_out<
     sc_out<bool> cycle_complete; //send when switched to red
     
     enum state_light color;
