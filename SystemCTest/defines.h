@@ -3,7 +3,7 @@
 //  SystemCTest
 //
 //  Created by Christian Haake on 1/16/13.
-//  Copyright (c) 2013 baroos. All rights reserved.
+//  Copyright (c) 2013 barfoos. All rights reserved.
 //
 
 #ifndef SystemCTest_defines_h
@@ -18,44 +18,27 @@
 #define DURATION_GRUEN      20
 #define DURATION_GELB       2
 
+#define OFFSET_BASE         (WAIT_ROTGELB_A2A4 + DURATION_ROTGELB)
+
+#define OFF                 0
+#define ON                  1
+
 #define NUM_STATES          4
 
 #define LIFECYCLE           360
 
 #define PRNT(a) printf("%s: [%s] - %s\n",sc_time_stamp().to_string().c_str(),name(),a);
 
-class train {
-    
-private:
-    
-public:
-    
-    int time1, time2, arrival;
-    // constructor
-    train()
-    {arrival=0;}
-    
-    train (int ar,int t1, int t2):
-        arrival(ar),time1(t1),time2(t2)
+        
+struct train
+{
+    int arrival;
+    int time1;
+    int time2;
+
+
+    train(int ar, int t1, int t2):arrival(ar),time1(t1),time2(t2)
     {}
-    
-    
-    //do some neccessary overload
-    inline friend ostream& operator << ( ostream& os,  train const & v ) {
-        os << "(" << v.arrival << ")";
-        return os;
-    }
-    
-    inline bool operator == (const train & t) const {
-        return (t.arrival == arrival 
-                && t.time1 == time1
-                && t.time2 == time2);
-    }
-    
-    operator bool() const
-    {
-        return (arrival);
-    }
 };
 
 enum state_light

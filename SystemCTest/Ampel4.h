@@ -3,7 +3,7 @@
 //  SystemCTest
 //
 //  Created by Christian Haake on 1/21/13.
-//  Copyright (c) 2013 baroos. All rights reserved.
+//  Copyright (c) 2013 barfoos. All rights reserved.
 //
 
 #ifndef SystemCTest_Ampel4_h

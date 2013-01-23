@@ -1,4 +1,11 @@
-// All systemc modules should include systemc.h header file
+//
+//  main.cpp
+//  SystemCTest
+//
+//  Created by Christian Haake on 1/16/13.
+//  Copyright (c) 2013 barfoos. All rights reserved.
+//
+
 #include "defines.h"
 
 #include "Ampel1.h"
@@ -26,8 +33,9 @@ int sc_main(int argc, char* argv[]) {
     sc_signal<state_arrow> connect2_arrow;
     
     //train signal
-    sc_fifo<train> sig_x1(1); //guarantee only one train at a time
-    sc_fifo<train> sig_x2(1);
+    sc_fifo<int> sig_x1(1); //guarantee only one train at a time
+    sc_fifo<int> sig_x2(1);
+    sc_fifo<int> train_passed;
     
     sc_clock clock("clock", 1, SC_SEC);
     
@@ -66,8 +74,12 @@ int sc_main(int argc, char* argv[]) {
     ampel2.cycle_complete(trigger21);
 
     ampel2.fifo_incomingTrain(sig_x1);
-    env.fifo_train(sig_x1);
+    env.fifo_train_in(sig_x1);
     ampel2.fifo_outgoingTrain(sig_x2);
+    env.fifo_train_out(sig_x2);
+    
+    env.fifo_train_passed_signal(train_passed);
+    ampel2.fifo_train_passed_signal(train_passed);
     
     //ampel2<->tramsignal
     ampel2.tram_out(connect2_tram);
