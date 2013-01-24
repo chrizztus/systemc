@@ -24,7 +24,7 @@ SC_MODULE (arrow) {
         sig_arrow = trigger.read();
         
         current = sc_time_stamp();
-        if(current.value() > 0) // to prevent debug out when system started
+        if(current.to_seconds() > 0) // to prevent debug out when system started
             PRNT(sig_arrow==eOff?"Pfeil aus":"Pfeil an");
     }
     

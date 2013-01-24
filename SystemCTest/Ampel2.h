@@ -33,12 +33,14 @@ SC_MODULE (ampel2) {
     /*
      * variables
      */
+    train *t;
+    int bla;
     enum state_light color;
     enum state_arrow eArrow;
     int internal_ticks;
-    int offset;
-    bool train_inside,train_at_signal;
-    train *t;
+    int offset,offset2;
+    bool train_inside,train_passed_signal,train_passed_x2;
+    
     int current_time;
     
     void tick()
@@ -59,10 +61,10 @@ SC_MODULE (ampel2) {
                 PRNT(colors[color]);
             }
             
-            if(internal_ticks >= WAIT_ROTGELB_A2A4
+            if((internal_ticks >= WAIT_ROTGELB_A2A4
                + DURATION_ROTGELB
-               + offset
-               && color == eRotgelb)
+               //+ offset
+               && color == eRotgelb))
             {
                 color = eGruen;
                 PRNT(colors[color]);
@@ -81,16 +83,19 @@ SC_MODULE (ampel2) {
                     int tmp_time = (t->arrival + t->time1) - current_time;
                     
                     //check if train already reached signal
-                    if  (tmp_time <= 0)
+                    if  (tmp_time <= 0 && !train_passed_signal)
                     {
                         fifo_train_passed_signal.write(current_time);
-                        t = NULL;
+                        PRNT("Train is passing signal");
+                        //t=NULL;
+                        train_passed_signal = true;
                     }
                     
-                    cout << "train will arrive signal in " << tmp_time << " seconds..." << endl;
+                    //cout << "train will arrive signal in " << tmp_time << " seconds..." << endl;
 
                     offset ++;
                 }
+                
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A2A4
@@ -99,9 +104,10 @@ SC_MODULE (ampel2) {
                + offset
                && color == eGruen)
             {
+                cout << "offset is " << offset << endl;
                 color = eGelb;
                 tram_out.write(eF0);
-                train_inside = false;
+                //train_inside = false;
                 PRNT(colors[color]);
                 
             }
@@ -145,10 +151,12 @@ SC_MODULE (ampel2) {
     {
         while (1)
         {
-            int foo;
-            fifo_outgoingTrain.read(foo);
-            //
-            //
+            int tmp;
+            fifo_outgoingTrain.read(tmp);
+            PRNT("Train arrived X2");
+            //delete t;
+            t = NULL;
+            train_passed_signal = false;
             wait(SC_ZERO_TIME);
         }
     }
@@ -160,6 +168,7 @@ SC_MODULE (ampel2) {
             int time = 0;
             fifo_incomingTrain.read(time);
             t = new train((int)sc_time_stamp().to_seconds(),time,0);
+            PRNT("Train arrived X1");
             wait(SC_ZERO_TIME);
         }
     }
@@ -169,8 +178,9 @@ SC_MODULE (ampel2) {
         color = eRot;
         eArrow = eOff;
         offset = 0;
-        train_inside = false;
+        //train_inside = false;
         t = NULL;
+        train_passed_signal = false;
         
         SC_THREAD(wait_incoming_train);
         SC_THREAD(wait_outgoing_train);
