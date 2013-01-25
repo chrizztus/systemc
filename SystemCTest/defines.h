@@ -18,14 +18,14 @@
 #define DURATION_GRUEN      20
 #define DURATION_GELB       2
 
-#define OFFSET_BASE         (WAIT_ROTGELB_A2A4 + DURATION_ROTGELB)
+#define OFFSET_BASE         (WAIT_ROTGELB_A2A4 + DURATION_ROTGELB + DURATION_GRUEN)
 
 #define OFF                 0
 #define ON                  1
 
 #define NUM_STATES          4
 
-#define LIFECYCLE           360
+#define LIFECYCLE           700
 
 #define PRNT(a) printf("%s: [%s] - %s\n",sc_time_stamp().to_string().c_str(),name(),a);
 

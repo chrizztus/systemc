@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A323DA416AD9BC80006EBAA /* libsystemc-2.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A323DA316AD9BC80006EBAA /* libsystemc-2.3.0.dylib */; };
+		4A323DAA16B298560006EBAA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 4A323DA916B298560006EBAA /* Makefile */; };
 		4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1E3FD169D92EF00D1395A /* main.cpp */; };
 		4AB1E400169D92EF00D1395A /* SystemCTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		4A323DA316AD9BC80006EBAA /* libsystemc-2.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsystemc-2.3.0.dylib"; path = "../../../../../../usr/local/lib/libsystemc-2.3.0.dylib"; sourceTree = "<group>"; };
+		4A323DA916B298560006EBAA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		4A380BEB16AD79A7003A9235 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				4AA705C616AE8C170077377D /* Tramsignal.h */,
 				4AA705C816AE9D6E0077377D /* RoterPfeil.h */,
 				4A380BEB16AD79A7003A9235 /* Environment.h */,
+				4A323DA916B298560006EBAA /* Makefile */,
 			);
 			path = SystemCTest;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */,
+				4A323DAA16B298560006EBAA /* Makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

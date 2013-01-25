@@ -33,12 +33,14 @@ SC_MODULE (ampel2) {
     /*
      * variables
      */
-    train *t;
-    int bla;
+    
+    
     enum state_light color;
     enum state_arrow eArrow;
     int internal_ticks;
     int offset,offset2;
+    train *t;
+    int bla;
     bool train_inside,train_passed_signal,train_passed_x2;
     
     int current_time;
@@ -50,23 +52,21 @@ SC_MODULE (ampel2) {
             
             ++internal_ticks;
             
-            if(internal_ticks == 305)
-                delete &t;
-            
             if(internal_ticks >= WAIT_ROTGELB_A2A4
                && color == eRot)
             {
                 cycle_complete.write(false);
                 color = eRotgelb;
+                
                 PRNT(colors[color]);
             }
             
             if((internal_ticks >= WAIT_ROTGELB_A2A4
                + DURATION_ROTGELB
-               //+ offset
                && color == eRotgelb))
             {
                 color = eGruen;
+                
                 PRNT(colors[color]);
             }
             
@@ -86,16 +86,17 @@ SC_MODULE (ampel2) {
                     if  (tmp_time <= 0 && !train_passed_signal)
                     {
                         fifo_train_passed_signal.write(current_time);
-                        PRNT("Train is passing signal");
-                        //t=NULL;
                         train_passed_signal = true;
+                        
+                        PRNT("Train is passing signal");
                     }
-                    
                     //cout << "train will arrive signal in " << tmp_time << " seconds..." << endl;
 
-                    offset ++;
+                    //offset ++;
+                    if(internal_ticks >= OFFSET_BASE)
+                        offset ++;
                 }
-                
+
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A2A4
@@ -124,7 +125,8 @@ SC_MODULE (ampel2) {
                 
                 internal_ticks = -1; //will be set on next sig_start
                 cycle_complete.write(true);
-                
+
+                t=NULL;
                 offset = 0;
             }
             
@@ -163,7 +165,7 @@ SC_MODULE (ampel2) {
     
     void wait_incoming_train()
     {
-        while (!t)
+        while (1)
         {
             int time = 0;
             fifo_incomingTrain.read(time);

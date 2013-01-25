@@ -42,15 +42,21 @@ SC_MODULE (env) {
         if(current_time == 0)
             start_work.write(true);
         
-        if (current_time == 289) {
+        if (current_time == 298) {
             t = new train(current_time,gen_rand(10,20),gen_rand(3,8));
-//            t.arrival = ;
-//            t.time1 = );
-//            t.time2 = ;
-            //train t(internal_ticks,gen_rand(10,20),gen_rand(3,8));
-            //delete t;
+            char foo[64];
+            sprintf(foo, "Train> Arrival: %d Time1: %d Time2: %d",t->arrival,t->time1,t->time2);
+            PRNT(foo);
             fifo_train_in.write(t->time1);
-            //PRNT("sending train sig");
+        }
+        
+        if (current_time == 342) {
+            t = new train(current_time,gen_rand(10,20),gen_rand(3,8));
+            char foo[64];
+            sprintf(foo, "Train> Arrival: %d Time1: %d Time2: %d",t->arrival,t->time1,t->time2);
+            PRNT(foo);
+            fifo_train_in.write(t->time1);
+            //delete t;
         }
         
         if(current_time == trigger_time)
