@@ -46,8 +46,7 @@ SC_MODULE (ampel1) {
                && color == eRotgelb)
             {
                 color = eGruen;
-                PRNT(colors[color]);
-
+                PRNT(colors[color]);s
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A1A3
@@ -57,7 +56,6 @@ SC_MODULE (ampel1) {
             {
                 color = eGelb;
                 PRNT(colors[color]);
-                
             }
             
             if(internal_ticks >= WAIT_ROTGELB_A1A3

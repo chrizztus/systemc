@@ -105,7 +105,7 @@ SC_MODULE (ampel2) {
                + offset
                && color == eGruen)
             {
-                cout << "offset is " << offset << endl;
+                //cout << "offset is " << offset << endl;
                 color = eGelb;
                 tram_out.write(eF0);
                 //train_inside = false;
