@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A323DA416AD9BC80006EBAA /* libsystemc-2.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A323DA316AD9BC80006EBAA /* libsystemc-2.3.0.dylib */; };
 		4A323DAA16B298560006EBAA /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 4A323DA916B298560006EBAA /* Makefile */; };
+		4AA1ED0016B6C0B900FEB432 /* plotfile.p in Sources */ = {isa = PBXBuildFile; fileRef = 4AA1ECFF16B6C0B900FEB432 /* plotfile.p */; };
 		4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1E3FD169D92EF00D1395A /* main.cpp */; };
 		4AB1E400169D92EF00D1395A /* SystemCTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4AB1E3FF169D92EF00D1395A /* SystemCTest.1 */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
 		4A91E13516A94FFB00A6C167 /* Ampel3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel3.h; sourceTree = "<group>"; };
+		4AA1ECFF16B6C0B900FEB432 /* plotfile.p */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = plotfile.p; sourceTree = "<group>"; };
 		4AA705C616AE8C170077377D /* Tramsignal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tramsignal.h; sourceTree = "<group>"; };
 		4AA705C816AE9D6E0077377D /* RoterPfeil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoterPfeil.h; sourceTree = "<group>"; };
 		4AB1E3F9169D92EF00D1395A /* SystemCTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SystemCTest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				4AA705C816AE9D6E0077377D /* RoterPfeil.h */,
 				4A380BEB16AD79A7003A9235 /* Environment.h */,
 				4A323DA916B298560006EBAA /* Makefile */,
+				4AA1ECFF16B6C0B900FEB432 /* plotfile.p */,
 			);
 			path = SystemCTest;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				4AB1E3FE169D92EF00D1395A /* main.cpp in Sources */,
 				4A323DAA16B298560006EBAA /* Makefile in Sources */,
+				4AA1ED0016B6C0B900FEB432 /* plotfile.p in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

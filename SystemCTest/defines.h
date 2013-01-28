@@ -25,7 +25,7 @@
 
 #define NUM_STATES          4
 
-#define LIFECYCLE           700
+#define LIFECYCLE           240
 
 #define PRNT(a) printf("%s: [%s] - %s\n",sc_time_stamp().to_string().c_str(),name(),a);
 
