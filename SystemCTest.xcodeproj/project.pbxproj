@@ -32,6 +32,9 @@
 		4A323DA916B298560006EBAA /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		4A380BEB16AD79A7003A9235 /* Environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		4A7EA86B16AD57DE00B06672 /* Ampel4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel4.h; sourceTree = "<group>"; };
+		4A8EA95516B87C0600C4D10E /* arrival155.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = arrival155.pdf; sourceTree = "<group>"; };
+		4A8EA95716B87C5900C4D10E /* systemc.dia */ = {isa = PBXFileReference; lastKnownFileType = file; path = systemc.dia; sourceTree = "<group>"; };
+		4A8EA95816B87C5900C4D10E /* systemc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = systemc.png; sourceTree = "<group>"; };
 		4A916DE616AB406A00D1D349 /* Ampel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel2.h; sourceTree = "<group>"; };
 		4A91E13516A94FFB00A6C167 /* Ampel3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ampel3.h; sourceTree = "<group>"; };
 		4AA1ECFF16B6C0B900FEB432 /* plotfile.p */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = plotfile.p; sourceTree = "<group>"; };
@@ -88,6 +91,9 @@
 				4A380BEB16AD79A7003A9235 /* Environment.h */,
 				4A323DA916B298560006EBAA /* Makefile */,
 				4AA1ECFF16B6C0B900FEB432 /* plotfile.p */,
+				4A8EA95516B87C0600C4D10E /* arrival155.pdf */,
+				4A8EA95716B87C5900C4D10E /* systemc.dia */,
+				4A8EA95816B87C5900C4D10E /* systemc.png */,
 			);
 			path = SystemCTest;
 			sourceTree = "<group>";
