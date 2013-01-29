@@ -10,6 +10,7 @@ SYSTEMC_HOME = /usr/local
 
 LIBDIR = -L $(SYSTEMC_HOME)/lib
 
+GNUPLOT = /opt/local/bin/gnuplot
 
 INCDIR = -I $(SYSTEMC_HOME)/include
 LIBS = -lsystemc -lm $(EXTRA_LIBS)
@@ -27,3 +28,6 @@ $(UNIT).o: $(UNIT).cpp defines.h Ampel1.h Ampel2.h Ampel3.h Ampel4.h Tramsignal.
 
 clean:
 	rm -f $(OBJS) $(TARGET) *~
+    
+plot:
+	$(GNUPLOT) plotfile.p

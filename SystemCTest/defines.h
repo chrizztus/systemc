@@ -27,6 +27,11 @@
 
 #define LIFECYCLE           240
 
+#define TRAIN_ARRIVAL       155
+
+#define WITH_GNUPLOT_OUT    1
+#define GNUPLOT_FILE_NAME   "gnuplot.dat"
+
 #define PRNT(a) printf("%s: [%s] - %s\n",sc_time_stamp().to_string().c_str(),name(),a);
 
         
@@ -64,6 +69,6 @@ enum state_tramsignal
 
 
 
-char *colors[NUM_STATES] = {"Rot","Rotgelb","Gruen","Gelb"};
+char *colors[NUM_STATES] = {(char*)"Rot",(char*)"Rotgelb",(char*)"Gruen",(char*)"Gelb"};
 
 #endif

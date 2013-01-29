@@ -88,14 +88,18 @@ SC_MODULE (ampel2) {
                         fifo_train_passed_signal.write(current_time);
                         train_passed_signal = true;
                         
-                        PRNT("Train is passing signal");
+                        PRNT("Zug passiert Signalanlage");
                     }
                     //cout << "train will arrive signal in " << tmp_time << " seconds..." << endl;
 
-                    //offset ++;
                     if(internal_ticks >= OFFSET_BASE)
                         offset ++;
+                    
+                    if(train_inside)
+                        arrow_out.write(eOn);
                 }
+                if (!train_inside)
+                    arrow_out.write(eOff);
 
             }
             
@@ -108,7 +112,6 @@ SC_MODULE (ampel2) {
                 //cout << "offset is " << offset << endl;
                 color = eGelb;
                 tram_out.write(eF0);
-                //train_inside = false;
                 PRNT(colors[color]);
                 
             }
@@ -145,7 +148,6 @@ SC_MODULE (ampel2) {
             printf("\n\n\n");
             PRNT("started cycle");
 
-//            sc_stop();
         }
     }
     
@@ -155,10 +157,11 @@ SC_MODULE (ampel2) {
         {
             int tmp;
             fifo_outgoingTrain.read(tmp);
-            PRNT("Train arrived X2");
+            PRNT("Zug hat X2 erreicht");
             //delete t;
             t = NULL;
             train_passed_signal = false;
+            train_inside = false;
             wait(SC_ZERO_TIME);
         }
     }
@@ -170,7 +173,8 @@ SC_MODULE (ampel2) {
             int time = 0;
             fifo_incomingTrain.read(time);
             t = new train((int)sc_time_stamp().to_seconds(),time,0);
-            PRNT("Train arrived X1");
+            PRNT("Zug hat X1 erreicht");
+            train_inside = true;
             wait(SC_ZERO_TIME);
         }
     }
@@ -180,7 +184,7 @@ SC_MODULE (ampel2) {
         color = eRot;
         eArrow = eOff;
         offset = 0;
-        //train_inside = false;
+        train_inside = false;
         t = NULL;
         train_passed_signal = false;
         

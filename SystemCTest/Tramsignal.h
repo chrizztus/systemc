@@ -15,8 +15,7 @@ SC_MODULE (tram) {
     
     sc_in<state_tramsignal> trigger;
     
-    sc_time current;
-    
+    uint32_t current;
     int color;
     enum state_tramsignal sig_tram;
     
@@ -24,8 +23,8 @@ SC_MODULE (tram) {
     {
         sig_tram = trigger.read();
         
-        current = sc_time_stamp();
-        if(current.value() > 0) // to prevent debug out when system started
+        current = (uint32_t) sc_time_stamp().to_seconds();
+        if(current > 0) // to prevent debug out when system started
             PRNT(sig_tram==eF0?"F0":"F1");
     }
     

@@ -89,11 +89,13 @@ int sc_main(int argc, char* argv[]) {
     ampel2.arrow_out(connect2_arrow);
     pfeil.trigger(connect2_arrow);
     
+#if WITH_GNUPLOT_OUT > 0
     //gnuplot connections
     env.light1_in(connect1_3);
     env.light2_in(connect2_4);
     env.arrow_in(connect2_arrow);
     env.tram_in(connect2_tram);
+#endif
     
     sc_start(LIFECYCLE, SC_SEC);
     
